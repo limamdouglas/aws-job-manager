@@ -160,9 +160,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "job": {
-            "$ref": "#/components/schemas/Job"
-          },
           "candidateName": {
             "type": "string",
             "nullable": true

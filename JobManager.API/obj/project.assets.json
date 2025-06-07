@@ -65,6 +65,22 @@
           }
         }
       },
+      "AWSSDK.S3/3.7.412.4": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.401.4, 4.0.0)"
+        },
+        "compile": {
+          "lib/net8.0/AWSSDK.S3.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.S3.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "AWSSDK.SimpleSystemsManagement/3.7.403.42": {
         "type": "package",
         "dependencies": {
@@ -1788,6 +1804,38 @@
         "lib/netcoreapp3.1/AWSSDK.Extensions.NETCore.Setup.pdb",
         "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.dll",
         "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.pdb"
+      ]
+    },
+    "AWSSDK.S3/3.7.412.4": {
+      "sha512": "QCYUlOW3DFp+yuDyFrNztuqJjSCIDp+6SBAKN7kgfIvoXrBOxtB8QZ1Y23quHDwabdrNNp8ZydTICvUcQaf8GA==",
+      "type": "package",
+      "path": "awssdk.s3/3.7.412.4",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/AWSSDK.S3.CodeAnalysis.dll",
+        "analyzers/dotnet/cs/SharedAnalysisCode.dll",
+        "awssdk.s3.3.7.412.4.nupkg.sha512",
+        "awssdk.s3.nuspec",
+        "images/AWSLogo.png",
+        "lib/net35/AWSSDK.S3.dll",
+        "lib/net35/AWSSDK.S3.pdb",
+        "lib/net35/AWSSDK.S3.xml",
+        "lib/net45/AWSSDK.S3.dll",
+        "lib/net45/AWSSDK.S3.pdb",
+        "lib/net45/AWSSDK.S3.xml",
+        "lib/net8.0/AWSSDK.S3.dll",
+        "lib/net8.0/AWSSDK.S3.pdb",
+        "lib/net8.0/AWSSDK.S3.xml",
+        "lib/netcoreapp3.1/AWSSDK.S3.dll",
+        "lib/netcoreapp3.1/AWSSDK.S3.pdb",
+        "lib/netcoreapp3.1/AWSSDK.S3.xml",
+        "lib/netstandard2.0/AWSSDK.S3.dll",
+        "lib/netstandard2.0/AWSSDK.S3.pdb",
+        "lib/netstandard2.0/AWSSDK.S3.xml",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
       ]
     },
     "AWSSDK.SimpleSystemsManagement/3.7.403.42": {
@@ -4754,6 +4802,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "AWSSDK.S3 >= 3.7.412.4",
       "AWSSDK.SimpleSystemsManagement >= 3.7.403.42",
       "Amazon.Extensions.Configuration.SystemsManager >= 6.2.2",
       "Microsoft.AspNetCore.OpenApi >= 8.0.16",
@@ -4813,6 +4862,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "AWSSDK.S3": {
+            "target": "Package",
+            "version": "[3.7.412.4, )"
+          },
           "AWSSDK.SimpleSystemsManagement": {
             "target": "Package",
             "version": "[3.7.403.42, )"

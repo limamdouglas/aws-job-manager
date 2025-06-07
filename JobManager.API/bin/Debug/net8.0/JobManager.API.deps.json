@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "JobManager.API/1.0.0": {
         "dependencies": {
+          "AWSSDK.S3": "3.7.412.4",
           "AWSSDK.SimpleSystemsManagement": "3.7.403.42",
           "Amazon.Extensions.Configuration.SystemsManager": "6.2.2",
           "Microsoft.AspNetCore.OpenApi": "8.0.16",
@@ -64,6 +65,17 @@
           "lib/net8.0/AWSSDK.Extensions.NETCore.Setup.dll": {
             "assemblyVersion": "3.3.0.0",
             "fileVersion": "3.7.7.0"
+          }
+        }
+      },
+      "AWSSDK.S3/3.7.412.4": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.402.3"
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.412.4"
           }
         }
       },
@@ -1054,6 +1066,13 @@
       "sha512": "sha512-hXejqa+G72kVCSmpKlNVWDEqa8KVWOFL/asgoE2mairQOnmTCv6vMxaXjJ0nQaad5/21zTdKDIfDiki5YTne1Q==",
       "path": "awssdk.extensions.netcore.setup/3.7.301",
       "hashPath": "awssdk.extensions.netcore.setup.3.7.301.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.412.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QCYUlOW3DFp+yuDyFrNztuqJjSCIDp+6SBAKN7kgfIvoXrBOxtB8QZ1Y23quHDwabdrNNp8ZydTICvUcQaf8GA==",
+      "path": "awssdk.s3/3.7.412.4",
+      "hashPath": "awssdk.s3.3.7.412.4.nupkg.sha512"
     },
     "AWSSDK.SimpleSystemsManagement/3.7.403.42": {
       "type": "package",

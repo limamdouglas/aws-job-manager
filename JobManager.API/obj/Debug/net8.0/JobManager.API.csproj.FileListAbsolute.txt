@@ -146,3 +146,5 @@ C:\Projetos\Estudo\JobManager\JobManager.API\bin\Debug\net8.0\AWSSDK.Core.dll
 C:\Projetos\Estudo\JobManager\JobManager.API\bin\Debug\net8.0\AWSSDK.Extensions.NETCore.Setup.dll
 C:\Projetos\Estudo\JobManager\JobManager.API\bin\Debug\net8.0\AWSSDK.SimpleSystemsManagement.dll
 C:\Projetos\Estudo\JobManager\JobManager.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Projetos\Estudo\JobManager\JobManager.API\bin\Debug\net8.0\AWSSDK.S3.dll
+C:\Projetos\Estudo\JobManager\JobManager.API\obj\Debug\net8.0\JobManager.API.sourcelink.json

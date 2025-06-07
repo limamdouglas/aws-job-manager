@@ -1,5 +1,7 @@
 using Amazon;
 using Amazon.Extensions.NETCore.Setup;
+using Amazon.S3;
+using Amazon.S3.Model;
 using JobManager.API.Entities;
 using JobManager.API.Persistence;
 using Microsoft.AspNetCore.Mvc;
@@ -67,17 +69,31 @@ app.MapPost("/api/jobs/{id}/applications", async (int id, JobApplication applica
 
 app.MapPut("/api/applications/{id}", async (int id, IFormFile file, [FromServices] AppDbContext db) =>
 {
-    if(file == null || file.Length == 0)
+    if (file == null || file.Length == 0)
         return Results.BadRequest();
 
     var extensions = Path.GetExtension(file.Name);
 
-    var validExtensions = new List<string> {".pdf", ".docx" };
+    var validExtensions = new List<string> { ".pdf", ".docx" };
 
-    if(!validExtensions.Contains(extensions))
+    if (!validExtensions.Contains(extensions))
         return Results.BadRequest();
 
+    var client = new AmazonS3Client(RegionEndpoint.SAEast1);
+
+    var bucketName = "awsjobmanager";
     var key = $"job-applications/{id}-{file.FileName}";
+
+    using var stream = file.OpenReadStream();
+
+    var putObject = new PutObjectRequest
+    {
+        BucketName = bucketName,
+        Key = key,
+        InputStream = stream
+    };
+
+    var response = await client.PutObjectAsync(putObject);
 
     var application = await db.JobApplications.SingleOrDefaultAsync(ja => ja.Id == id);
 
@@ -89,6 +105,6 @@ app.MapPut("/api/applications/{id}", async (int id, IFormFile file, [FromService
     await db.SaveChangesAsync();
 
     return Results.NoContent();
-});
+}).DisableAntiforgery();
 
 await app.RunAsync();

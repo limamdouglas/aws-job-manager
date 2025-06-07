@@ -26,6 +26,7 @@
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\limam\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.3</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\limam\.nuget\packages\awssdk.core\3.7.402.3</PkgAWSSDK_Core>
     <PkgAWSSDK_SimpleSystemsManagement Condition=" '$(PkgAWSSDK_SimpleSystemsManagement)' == '' ">C:\Users\limam\.nuget\packages\awssdk.simplesystemsmanagement\3.7.403.42</PkgAWSSDK_SimpleSystemsManagement>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\limam\.nuget\packages\awssdk.s3\3.7.412.4</PkgAWSSDK_S3>
     <PkgAWSSDK_AppConfigData Condition=" '$(PkgAWSSDK_AppConfigData)' == '' ">C:\Users\limam\.nuget\packages\awssdk.appconfigdata\3.7.400.34</PkgAWSSDK_AppConfigData>
   </PropertyGroup>
 </Project>

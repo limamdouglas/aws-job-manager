@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.412.4, )"
+            },
             "AWSSDK.SimpleSystemsManagement": {
               "target": "Package",
               "version": "[3.7.403.42, )"

@@ -1,4 +1,6 @@
 using Amazon;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
 using Amazon.Extensions.NETCore.Setup;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -7,6 +9,7 @@ using Amazon.SQS;
 using Amazon.SQS.Model;
 using JobManager.API.Entities;
 using JobManager.API.Persistence;
+using JobManager.API.Persistence.Models;
 using JobManager.API.Worker;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +31,7 @@ var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(connectionString));
 
 builder.Services.AddHostedService<JobApplicationNotificationWorker>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,9 +55,30 @@ app.MapPost("/api/jobs", async (Job job, AppDbContext db) =>
     return Results.Created($"/api/jobs/{job.Id}", job);
 });
 
+app.MapPost("/api/v2/jobs", async (Job job) =>
+{
+    var client = new AmazonDynamoDBClient(RegionEndpoint.SAEast1);
+    var db = new DynamoDBContext(client);
+
+    var model = JobDbModel.FromEntity(job);
+
+    await db.SaveAsync(model);
+
+    return Results.Created($"/api/jobs/{job.Id}", job);
+});
+
 app.MapGet("/api/jobs", async (AppDbContext db) =>
 {
     var jobs = await db.Jobs.ToListAsync();
+    return Results.Ok(jobs);
+});
+
+app.MapGet("/api/v2/jobs", async () =>
+{
+    var client = new AmazonDynamoDBClient(RegionEndpoint.SAEast1);
+    var db = new DynamoDBContext(client);
+
+    var jobs = await db.ScanAsync<JobDbModel>([]).GetRemainingAsync();
     return Results.Ok(jobs);
 });
 

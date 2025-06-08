@@ -2,6 +2,7 @@ using Amazon;
 using Amazon.Extensions.NETCore.Setup;
 using Amazon.S3;
 using Amazon.S3.Model;
+using Amazon.SimpleSystemsManagement.Model;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using JobManager.API.Entities;
@@ -122,5 +123,30 @@ app.MapPut("/api/applications/{id}", async (int id, IFormFile file, [FromService
 
     return Results.NoContent();
 }).DisableAntiforgery();
+
+app.MapGet("/api/applications/{id}/cv", async (int id, [FromServices] AppDbContext db) =>
+{
+    var baseS3Url = "https://awsjobmanager.s3.sa-east-1.amazonaws.com";
+
+    var application = await db.JobApplications.FirstOrDefaultAsync(ja => ja.Id == id);
+    if (application is null)
+    {
+        return Results.NotFound();
+    }
+
+    var bucketName = "awsjobmanager";
+
+    var getRequest = new GetObjectRequest
+    {
+        BucketName = bucketName,
+        Key = application.CvUrl
+    };
+
+    var client = new AmazonS3Client(RegionEndpoint.SAEast1);
+
+    var response = await client.GetObjectAsync(getRequest);
+
+    return Results.File(response.ResponseStream, response.Headers.ContentType);
+});
 
 await app.RunAsync();

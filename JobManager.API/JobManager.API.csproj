@@ -12,6 +12,7 @@
     <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="6.2.2" />
     <PackageReference Include="AWSSDK.S3" Version="3.7.412.4" />
     <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.403.42" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.400.84" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.16">
       <PrivateAssets>all</PrivateAssets>

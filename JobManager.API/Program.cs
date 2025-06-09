@@ -151,8 +151,6 @@ app.MapPut("/api/applications/{id}", async (int id, IFormFile file, [FromService
 
 app.MapGet("/api/applications/{id}/cv", async (int id, [FromServices] AppDbContext db) =>
 {
-    var baseS3Url = "https://awsjobmanager.s3.sa-east-1.amazonaws.com";
-
     var application = await db.JobApplications.FirstOrDefaultAsync(ja => ja.Id == id);
     if (application is null)
     {
